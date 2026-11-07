@@ -3,14 +3,18 @@ import re
 import pandas as pd
 
 
-def _is_valid_label(label):
+def _is_valid_label(label: object) -> bool:
     return (
         isinstance(label, str)
         and re.fullmatch(r"[A-Za-z_]+", label) is not None
     )
 
 
-def add_virtual_column(df, role, new_column):
+def add_virtual_column(
+    df: pd.DataFrame,
+    role: str,
+    new_column: str,
+) -> pd.DataFrame:
     if not isinstance(role, str) or not _is_valid_label(new_column):
         return pd.DataFrame()
 
