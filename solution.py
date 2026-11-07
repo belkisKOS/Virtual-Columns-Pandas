@@ -4,6 +4,8 @@ import pandas as pd
 def add_virtual_column(df, role, new_column):
     if role.count("+") == 1:
         operator = "+"
+    elif role.count("-") == 1:
+        operator = "-"
     elif role.count("*") == 1:
         operator = "*"
     else:
@@ -19,6 +21,8 @@ def add_virtual_column(df, role, new_column):
     result = df.copy()
     if operator == "+":
         result[new_column] = result[left_column] + result[right_column]
+    elif operator == "-":
+        result[new_column] = result[left_column] - result[right_column]
     elif operator == "*":
         result[new_column] = result[left_column] * result[right_column]
 
