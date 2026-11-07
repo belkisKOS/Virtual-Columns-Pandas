@@ -15,6 +15,11 @@ def add_virtual_column(
     role: str,
     new_column: str,
 ) -> pd.DataFrame:
+    """Return a copy of the DataFrame with one calculated column.
+
+    The role must contain two column names and one supported operator.
+    Invalid roles or column names return an empty DataFrame.
+    """
     if not isinstance(role, str) or not _is_valid_label(new_column):
         return pd.DataFrame()
 
